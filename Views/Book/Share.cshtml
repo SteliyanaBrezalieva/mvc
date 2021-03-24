@@ -1,0 +1,72 @@
+﻿@model Project.ViewModels.Books.ShareVM
+@using Project.Entities;
+@{
+    ViewBag.Title = "Share Book";  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <h1>Share Book</h1>   
+<fieldset>
+    <row class="col-3">
+        <h1>Book: </h1>
+        <span class="b">Title: </span> @Model.Book.Title
+        <span class="b">Author: </span> @Model.Book.Author
+        <span class="b">Genre:  </span> @Model.Book.Genre
+    </row>
+    <hr />
+    <div class="row">
+        <h2>This Book is shared with: </h2>
+    </div>
+    @*<div class="grid">*@
+        <div class="row">
+            <div class="col-1">First Name</div>
+            <div class="col-1">Last Name</div>
+            <div class="col-1">Username</div>
+        </div>
+    @*</div>*@
+
+    @foreach (User item in Model.SharedWith)
+    {
+
+        <div class="grid">
+            <div class="row-users">
+
+                <div class="col-2">@item.Username</div> <br />
+
+                <div class="col-2">@item.FirstName</div> <br />
+
+                <div class="col-2">@item.LastName</div>
+
+                <div class="col-2">
+                    <a href="/Book/RevokeAccess?UserId=@item.Id&BookId=@Model.Book.Id"> <i class="fa fa-close" style="color:red
+    "></i></a>
+                    
+                </div>
+                <br />
+            </div>
+        </div>
+    }
+    
+    <div class="row">
+        <fieldset>
+            <form action="/Book/Share" method="post">
+                <input type="hidden" name="BookId" value="@Model.Book.Id" />
+                <div class="col-1">Share: </div>
+
+            <div>
+                <select name="UserId">
+                    @foreach (User item in Model.Users)
+                    {
+                        <option value="@item.Id">@item.FirstName @item.LastName</option>
+
+                    }
+
+                </select>
+            </div>
+                <div class="col-2">
+                    <input type="submit" value="Share" />
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</fieldset>

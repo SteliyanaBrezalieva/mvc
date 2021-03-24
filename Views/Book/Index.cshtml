@@ -1,0 +1,41 @@
+﻿@model Project.ViewModels.Books.IndexVM
+@using Project.Entities;
+@{
+    ViewBag.Title = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Favourite Books</h1>
+<fieldset>
+    <div id="add-new-book"><a href="/Book/Create"><i class="fa fa-book"></i>&nbsp; Add new book </a></div>
+        <div class="grid">
+            <div class="row">
+
+                <div class="col-1">Title</div>
+                <div class="col-1">Author</div>
+                <div class="col-1">Genre</div>
+            </div>
+        </div>
+
+        @foreach (Book item in Model.Items)
+        {
+
+            <div class="grid">
+                <div class="row">
+
+                    <div class="col-2">@item.Title</div>
+
+                    <div class="col-2">@item.Author</div>
+
+                    <div class="col-2">@item.Genre</div>
+
+                    <div class="col-3">
+                        <a href="/Book/Edit?id=@item.Id"><i class="fa fa-edit"></i></a>
+                        <a href="/Book/Share?id=@item.Id"><i class="fa fa-share-square"></i></a>
+                        <a href="/Book/Delete?id=@item.Id"><i class="fa fa-trash"></i></a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        }
+    </fieldset>

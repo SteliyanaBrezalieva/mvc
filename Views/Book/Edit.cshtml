@@ -1,0 +1,48 @@
+﻿@model Project.ViewModels.Books.EditVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<fieldset>
+    <legend>Edit Book</legend>
+
+    <form action="/Book/Edit" method="post">
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.UserId)
+        <div class="grid">
+            @*<div class="row">
+                <div class="col-1">Username: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Username)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Username, null, new { @class = "error" })</div>
+            </div>*@
+            @*<div class="row">
+                <div class="col-1">Password: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Password)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Password, null, new { @class = "error" })</div>
+            </div>*@
+            <div class="row">
+                <div class="col-1"> Title: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Title)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Title, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Author: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Author)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Author, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Genre: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Genre)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Genre, null, new { @class = "error" })</div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">                 
+                        <input type="submit" value="Edit" />
+                </div>
+            </div>
+        </div>
+    </form>
+</fieldset>
+

@@ -1,0 +1,145 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/css-style.css" />
+    <script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
+    <script src="{% static 'network/functions.js' %}"></script>
+</head>
+<body>
+
+    @*<div class="section">*@
+    @*<span class="right">
+                Hello, @(this.Context.Session.GetString("LoggedUserId")!= null
+                                      ? this.Context.Session.GetString("LoggedUserUsername")
+                                      : "Annonymous")
+            </span>
+        </div>*@
+
+    <div class="section">
+        <ul>
+            <li>
+                <a href="/Home/Index"><i class="fa fa-home" style="font-size:18px">&nbsp; Home </i></a>
+            </li>
+            @if (this.Context.Session.GetString("LoggedUserId") != null)
+            {
+                <li>
+                    <a href="/Users/Index"><i class="fa fa-group" style="font-size:18px">&nbsp; Users </i></a>
+                </li>
+
+                <li>
+                    <a href="/Book/Index"><i class="fa fa-book" style="font-size:18px">&nbsp; Books </i></a>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a href="#"><i class="fa fa-marker" style="font-size:18px"></i>&nbsp;Authors</a>
+                    <div class="dropdown-content">
+                    <a href="#">Agatha Christie</a>
+                    <a href="#">James Patterson</a>
+                    <a href="#">Leo Tolstoy </a>
+                    <a href="#">Danielle Steel </a>
+                    <a href="#">J.K Rowling</a>
+                    <a href="#">Stephen King</a>
+                    <a href="#">More...</a>
+            </div>
+        </div>
+
+                </li>
+            }
+            <li>
+                @if (this.Context.Session.GetString("LoggedUserId") == null)
+                {
+                <a href="/Home/Login"><i class="fa fa-user" style="font-size:18px">&nbsp;Login</i></a>
+                }
+                else
+                {
+                    <a href="/Home/Logout"><i class="fa fa-sign-out" style="font-size:18px">&nbsp; Logout </i></a>
+                }
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="search">
+        <form>
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+
+@*<li>
+        <a href="/Users/Index">Users</a>
+    </li>*@
+<!--<li>
+    <a href="/Book/Index">Books</a>
+    <div class="dropdown">
+
+        <div class="dropdown-content">
+            <a href="#">Classics</a>
+            <a href="#">Romance</a>
+            <a href="#">Comic Book </a>
+            <a href="#">Fantasy </a>
+            <a href="#">Horror </a>
+            <a href="#">Science Fiction (Sci-Fi)</a>
+            <a href="#">More...</a>
+        </div>
+    </div>
+</li>-->
+@*<li>
+        <a href="/Book/Index">Books</a>
+    </li>*@
+<!--<li>-->
+@*<div class="dropdown">*@
+<!--<a href="/Home/Authors">Authors</a>
+    </li>
+</ul>-->
+@*<div class="dropdown-content">
+            <a href="#">Agatha Christie</a>
+            <a href="#">James Patterson</a>
+            <a href="#">Leo Tolstoy </a>
+            <a href="#">Danielle Steel </a>
+            <a href="#">J.K Rowling</a>
+            <a href="#">Stephen King</a>
+            <a href="#">More...</a>
+        </div>
+    </div>*@
+
+
+@*<li>
+        @if (this.Context.Session.GetString("loggedUser") == null)
+        {
+            <a href="/Home/Login">Login</a>
+        }
+        else
+        {
+             <a href="/Home/Logout">Logout</a>
+        }
+
+    </li>*@
+

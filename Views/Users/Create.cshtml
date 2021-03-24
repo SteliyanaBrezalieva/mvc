@@ -1,0 +1,51 @@
+﻿@model Project.ViewModels.Users.CreateVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<fieldset>
+    <legend>Create New User</legend>
+
+    <form action="/Users/Create" method="post">
+        <div class="grid">
+            <div class="row">
+                <div class="col-1">Username: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Username)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Username, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Password: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Password,  new { @class = "create", type = "password" })</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Password, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">First Name: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.FirstName)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Last Name: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.LastName)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.LastName, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Email: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Email)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Email, null, new { @class = "error" })</div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <input type="submit" value="Submit" />
+                    <a href = "/Home/Index">Back to HomePage</a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </form>
+</fieldset>
+

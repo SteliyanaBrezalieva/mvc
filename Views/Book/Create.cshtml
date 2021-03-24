@@ -1,0 +1,49 @@
+﻿
+@model Project.ViewModels.Books.CreateVM
+
+@{
+    ViewData["Title"] = "Create Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<fieldset>
+    <legend>Create New Book</legend>
+
+    <form action="/Book/Index" method="post">
+        <div class="grid">
+            @*<div class="row">
+            <div class="col-1">BookId: </div>
+            <div class="col-2">@Html.TextBoxFor(m => m.BookId)</div>
+            <div class="col-2">@Html.ValidationMessageFor(m => m.BookId, null, new { @class = "error" })</div>
+        </div>*@
+            <div class="row">
+                <div class="col-1">Title: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Title)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Title, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Author: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Author)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Author, null, new { @class = "error" })</div>
+            </div>
+            <div class="row">
+                <div class="col-1">Genre: </div>
+                <div class="col-2">@Html.TextBoxFor(m => m.Genre)</div>
+                <div class="col-2">@Html.ValidationMessageFor(m => m.Genre, null, new { @class = "error" })</div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-3">
+                    <input type="submit" value="Create" />
+                    <a href="/Book/Index">Back to HomePage</a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </form>
+</fieldset>
+

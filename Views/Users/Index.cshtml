@@ -1,0 +1,40 @@
+﻿@model Project.ViewModels.Users.IndexVM
+@using Project.Entities;
+@{
+    ViewBag.Title = "Users Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Users Management</h1>
+<fieldset>
+    <div id="add-new-user"><a href="/Users/Create"><i class="fa fa-user-plus"></i>&nbsp; Add new user</a></div>
+    <div class="grid">
+        <div class="row">
+
+            <div class="col-1">Username</div>
+            <div class="col-1">First Name</div>
+            <div class="col-1">Last Name</div>
+        </div>
+    </div>
+
+    @foreach (User item in Model.Items)
+    {
+
+        <div class="grid">
+            <div class="row">
+
+                <div class="col-2">@item.Username</div>
+
+                <div class="col-2">@item.FirstName</div>
+
+                <div class="col-2">@item.LastName</div>
+
+                <div class="col-2">
+                    <a href="/Users/Edit?id=@item.Id"><i class="fa fa-edit"></i></a>
+                    <a href="/Users/Delete?id=@item.Id"><i class="fa fa-trash"></i></a>
+                </div>
+                <br />
+            </div>
+        </div>
+    }
+</fieldset>
